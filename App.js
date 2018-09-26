@@ -1,113 +1,167 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, ScrollView, Image, Button, Alert, FlatList, SectionList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  ScrollView,
+  Image,
+  Button,
+  Alert,
+  FlatList,
+  SectionList,
+  ListView, ImageBackground, TouchableOpacity
+} from 'react-native';
 
 import { createStackNavigator } from 'react-navigation';
 
 import Login from './Login';
 import SecurePage from './SecurePage';
+import navigate from 'react-navigation/src/NavigationActions';
+import InputScreen from './InputScreen';
 
 class HomeScreen extends React.Component {
 
+  static navigationOptions = {
+    title: 'home'
+  };
 
-	constructor(props) {
-		super(props);
+  // constructor(props) {
+  //   super(props);
+  //
+  //   this.state = {
+  //     isLoggedIn: false,
+  //   }
+  // }
 
-		this.state = {
-			isLoggedIn: false,
-		}
-	}
+  // onLogin = () => {
+  //   this.setState({
+  //     isLoggedIn: true,
+  //   })
+  // };
+  //
+  // onLogout = () => {
+  //   this.setState({
+  //     isLoggedIn: false,
+  //   })
+  // };
 
-	static navigationOptions = {
-		title: 'Home',
-	};
+  render() {
+    const { navigate } = this.props.navigation;
 
-	onLogin = () => {
-		this.setState({
-			isLoggedIn: true,
-		})
-	};
+    // return this.state.isLoggedIn ? <WelcomePage navigation={this.props.navigation}/> : <Login onLogin={this.onLogin}/>;
+    return (
+      <TouchableOpacity onPress={() => navigate('Input', {})}>
+        <View>
+          <Image
+            source={require('./image/home.png')}
+            style={{ width: '100%', height: '100%' }}>
+          </Image>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+}
 
-	onLogout = () => {
-		this.setState({
-			isLoggedIn: false,
-		})
-	};
+class WelcomePage extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
 
-	render() {
-		return this.state.isLoggedIn ? <SecurePage onLogout={this.onLogout}/> : <Login onLogin={this.onLogin}/>;
-	}
+  render() {
+    const { navigate } = this.props.navigation;
+
+    return (
+      <View style={{ flex: 1 }}>
+        {/*<ImageBackground*/}
+        {/*source={require('./image/home.png')}*/}
+        {/*style={{ width: '100%', height: '100%' }}*/}
+        {/*onPress={() => navigate('Input', {})}>*/}
+        {/*</ImageBackground>*/}
+        <Button
+          title='haha'
+          style={{ top: 40 }}
+          onPress={() => navigate('Input', {})}>
+          >
+        </Button>
+      </View>
+    )
+  }
 }
 
 class DetailsScreen extends React.Component {
 
-	static navigationOptions = {
-		title: 'Detail',
-	};
+  static navigationOptions = {
+    title: 'Detail',
+  };
 
-	render() {
-		/* 2. Get the param, provide a fallback value if not available */
-		const { navigation } = this.props;
-		const itemId = navigation.getParam('itemId', 'NO-ID');
-		const otherParam = navigation.getParam('otherParam', 'some default value');
+  render() {
+    /* 2. Get the param, provide a fallback value if not available */
+    const { navigation } = this.props;
+    const itemId = navigation.getParam('itemId', 'NO-ID');
+    const otherParam = navigation.getParam('otherParam', 'some default value');
 
-		return (
-			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-				<Text>Details Screen</Text>
-				<Text>itemId: {JSON.stringify(itemId)}</Text>
-				<Text>otherParam: {JSON.stringify(otherParam)}</Text>
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+        <Text>itemId: {JSON.stringify(itemId)}</Text>
+        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
 
-				<FlatList
-					data={[
-						{ key: 'Devin' },
-						{ key: 'Jackson' },
-						{ key: 'James' },
-						{ key: 'Joel' },
-						{ key: 'John' },
-						{ key: 'Jillian' },
-						{ key: 'Jimmy' },
-						{ key: 'Julie' },
-					]}
-					renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-				/>
+        <FlatList
+          data={[
+            { key: 'Devin' },
+            { key: 'Jackson' },
+            { key: 'James' },
+            { key: 'Joel' },
+            { key: 'John' },
+            { key: 'Jillian' },
+            { key: 'Jimmy' },
+            { key: 'Julie' },
+          ]}
+          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+        />
 
 
-				<SectionList
-					sections={[
-						{title: 'D', data: ['Devin']},
-						{title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
-					]}
-					renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-					renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-					keyExtractor={(item, index) => index}
-				/>
+        <SectionList
+          sections={[
+            { title: 'D', data: ['Devin'] },
+            { title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie'] },
+          ]}
+          renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => index}
+        />
 
-				<Button
-					title="Go to Details... again"
-					onPress={() =>
-						this.props.navigation.push('Details', {
-							itemId: Math.floor(Math.random() * 100),
-						})}
-				/>
-				<Button
-					title="Go to Home"
-					onPress={() => this.props.navigation.navigate('Home')}
-				/>
-				<Button
-					title="Go back"
-					onPress={() => this.props.navigation.goBack()}
-				/>
-			</View>
-		);
-	}
+        <Button
+          title="Go to Details... again"
+          onPress={() =>
+            this.props.navigation.push('Details', {
+              itemId: Math.floor(Math.random() * 100),
+            })}
+        />
+        <Button
+          title="Go to Home"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
+        <Button
+          title="Go back"
+          onPress={() => this.props.navigation.goBack()}
+        />
+      </View>
+    );
+  }
 }
 
 export default createStackNavigator({
-	Home: {
-		screen: HomeScreen
-	},
-	Details: {
-		screen: DetailsScreen
-	}
+  Home: {
+    screen: HomeScreen
+  },
+  Details: {
+    screen: DetailsScreen
+  },
+  Input: {
+    screen: InputScreen
+  }
 });
 
 //
@@ -193,24 +247,24 @@ export default createStackNavigator({
 // }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		// alignItems: 'center',
-		// justifyContent: 'flex-start',
-	},
-	sectionHeader: {
-		paddingTop: 2,
-		paddingLeft: 10,
-		paddingRight: 10,
-		paddingBottom: 2,
-		fontSize: 14,
-		fontWeight: 'bold',
-		backgroundColor: 'rgba(247,247,247,1.0)',
-	},
-	item: {
-		padding: 10,
-		fontSize: 18,
-		height: 44,
-	},
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'flex-start',
+  },
+  sectionHeader: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(247,247,247,1.0)',
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
 });

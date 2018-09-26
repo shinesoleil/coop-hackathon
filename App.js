@@ -18,7 +18,8 @@ import { createStackNavigator } from 'react-navigation';
 import Login from './Login';
 import SecurePage from './SecurePage';
 import navigate from 'react-navigation/src/NavigationActions';
-import InputScreen from './InputScreen';
+import InputScreen from './LocalScreens/InputScreen';
+import LocalHome from './LocalScreens/LocalHome';
 
 class HomeScreen extends React.Component {
 
@@ -51,7 +52,7 @@ class HomeScreen extends React.Component {
 
     // return this.state.isLoggedIn ? <WelcomePage navigation={this.props.navigation}/> : <Login onLogin={this.onLogin}/>;
     return (
-      <TouchableOpacity onPress={() => navigate('Input', {})}>
+      <TouchableOpacity onPress={() => navigate('LocalHome', {})}>
         <View>
           <Image
             source={require('./image/home.png')}
@@ -59,32 +60,6 @@ class HomeScreen extends React.Component {
           </Image>
         </View>
       </TouchableOpacity>
-    )
-  }
-}
-
-class WelcomePage extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
-
-  render() {
-    const { navigate } = this.props.navigation;
-
-    return (
-      <View style={{ flex: 1 }}>
-        {/*<ImageBackground*/}
-        {/*source={require('./image/home.png')}*/}
-        {/*style={{ width: '100%', height: '100%' }}*/}
-        {/*onPress={() => navigate('Input', {})}>*/}
-        {/*</ImageBackground>*/}
-        <Button
-          title='haha'
-          style={{ top: 40 }}
-          onPress={() => navigate('Input', {})}>
-          >
-        </Button>
-      </View>
     )
   }
 }
@@ -161,6 +136,9 @@ export default createStackNavigator({
   },
   Input: {
     screen: InputScreen
+  },
+  LocalHome: {
+    screen: LocalHome
   }
 });
 

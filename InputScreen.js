@@ -57,7 +57,7 @@ class InputScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, height: "80%" }}>
+      <View style={{ flex: 1 }}>
         <View
           style={[
             {
@@ -82,7 +82,7 @@ class InputScreen extends React.Component {
             }}
           >
             <Image
-              source={require("../image/view.png")}
+              source={require("./image/view.png")}
               style={{ width: 14, height: 16 }}
             />
             <Text style={{ fontSize: 15, textAlign: "right", height: 22 }}>

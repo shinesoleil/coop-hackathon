@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Slider from "react-native-slider/src/Slider";
 
+
 class InputScreen extends React.Component {
   static navigationOptions = {
     title: "我是记录员 - 第二步",
@@ -100,7 +101,7 @@ class InputScreen extends React.Component {
             >
               <Image
                 source={require("../image/view.png")}
-                style={{ width: 14, height: 16 }}
+                style={{ width: 14, height: 16, marginRight: 5 }}
               />
               <Text
                 style={{
@@ -175,6 +176,7 @@ class InputScreen extends React.Component {
           />
           <View style={styles.divider} />
 
+
           <View
             style={[
               {
@@ -199,7 +201,7 @@ class InputScreen extends React.Component {
             >
               <Image
                 source={require("../image/view.png")}
-                style={{ width: 14, height: 16 }}
+                style={{ width: 14, height: 16, marginRight: 5  }}
               />
               <Text
                 style={{
@@ -298,7 +300,7 @@ class InputScreen extends React.Component {
             >
               <Image
                 source={require("../image/view.png")}
-                style={{ width: 14, height: 16 }}
+                style={{ width: 14, height: 16, marginRight: 5  }}
               />
               <Text
                 style={{
@@ -397,7 +399,7 @@ class InputScreen extends React.Component {
             >
               <Image
                 source={require("../image/view.png")}
-                style={{ width: 14, height: 16 }}
+                style={{ width: 14, height: 16, marginRight: 5  }}
               />
               <Text
                 style={{
@@ -482,7 +484,9 @@ class InputScreen extends React.Component {
           >
             <TouchableOpacity
               style={styles.nextButton}
-              onPress={() => this.props.navigation.navigate('LocalHome')}
+              onPress={() => {
+                this.props.navigation.navigate("LocalHome")
+              }}
             >
               <Text style={styles.nextButtonText}> 提交 </Text>
             </TouchableOpacity>

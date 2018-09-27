@@ -5,7 +5,8 @@ import {
   TextInput,
   View,
   Image,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from "react-native";
 import Slider from "react-native-slider/src/Slider";
 
@@ -64,13 +65,8 @@ class InputScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
-
-        <Image
-          style={styles.image}
-          source={require('../image/step2.png')}
-        />
-
+      <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+        <Image style={styles.image} source={require("../image/step2.png")} />
 
         <View
           style={[
@@ -105,7 +101,7 @@ class InputScreen extends React.Component {
                 height: 22,
                 color: "rgb(32, 200, 255)"
               }}
-              onPress={() => this.props.navigation.navigate('AnimalInspector')}
+              onPress={() => this.props.navigation.navigate("AnimalInspector")}
             >
               查看
             </Text>
@@ -207,6 +203,21 @@ class InputScreen extends React.Component {
           onValueChange={value => this.setState({ forthNum: value })}
         />
         <View style={styles.divider} />
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 5
+          }}
+        >
+          <TouchableOpacity
+            style={styles.nextButton}
+            // onPress={() => this.props.navigation.navigate('LocalForm')}
+          >
+            <Text style={styles.nextButtonText}> 提交 </Text>
+          </TouchableOpacity>
+        </View>
 
         <Text style={{ padding: 10, fontSize: 15 }}>
           FBI（科级耐污指数）：
@@ -224,7 +235,7 @@ class InputScreen extends React.Component {
 
 const styles = StyleSheet.create({
   image: {
-    width: '100%',
+    width: "100%",
     height: 50,
     marginTop: 20,
     marginBottom: 20
@@ -246,6 +257,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginTop: 10,
     marginBottom: 10
+  },
+  nextButton: {
+    width: 304,
+    height: 44,
+    backgroundColor: "#272C2F",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  nextButtonText: {
+    fontSize: 16,
+    color: "#FFFFFF"
   }
 });
 

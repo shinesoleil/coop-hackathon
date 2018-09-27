@@ -482,7 +482,7 @@ class InputScreen extends React.Component {
           >
             <TouchableOpacity
               style={styles.nextButton}
-              // onPress={() => this.props.navigation.navigate('LocalForm')}
+              onPress={() => this.props.navigation.navigate('LocalHome')}
             >
               <Text style={styles.nextButtonText}> 提交 </Text>
             </TouchableOpacity>

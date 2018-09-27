@@ -64,7 +64,14 @@ class InputScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+
+        <Image
+          style={styles.image}
+          source={require('../image/step2.png')}
+        />
+
+
         <View
           style={[
             {
@@ -98,6 +105,7 @@ class InputScreen extends React.Component {
                 height: 22,
                 color: "rgb(32, 200, 255)"
               }}
+              onPress={() => this.props.navigation.navigate('AnimalInspector')}
             >
               查看
             </Text>
@@ -215,6 +223,12 @@ class InputScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  image: {
+    width: '100%',
+    height: 50,
+    marginTop: 20,
+    marginBottom: 20
+  },
   text: {
     margin: 10,
     fontSize: 15,

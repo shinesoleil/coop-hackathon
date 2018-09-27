@@ -12,7 +12,14 @@ import Slider from "react-native-slider/src/Slider";
 
 class InputScreen extends React.Component {
   static navigationOptions = {
-    title: "我是记录员 - 第二步"
+    title: "我是记录员 - 第二步",
+    headerStyle: {
+      backgroundColor: "rgb(39,44,47)"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
   };
 
   constructor(props) {
@@ -480,16 +487,6 @@ class InputScreen extends React.Component {
               <Text style={styles.nextButtonText}> 提交 </Text>
             </TouchableOpacity>
           </View>
-
-          {/* <Text style={{ padding: 10, fontSize: 15 }}>
-            FBI（科级耐污指数）：
-            {this.calculateFBI()}
-          </Text>
-
-          <Text style={{ padding: 10, fontSize: 15 }}>
-            水质综合评价：
-            {this.translateStatus(this.calculateFBI())}
-          </Text> */}
         </ScrollView>
         <View style={styles.bottomView}>
           <View style={styles.bottomContainer}>

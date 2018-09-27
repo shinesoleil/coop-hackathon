@@ -4,7 +4,14 @@ import Slider from "react-native-slider/src/Slider";
 
 class InputScreen extends React.Component {
   static navigationOptions = {
-    title: "我是记录员"
+    title: "我是记录员",
+    headerStyle: {
+      backgroundColor: "rgb(39,44,47)"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
   };
 
   constructor(props) {

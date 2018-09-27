@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -10,23 +10,24 @@ import {
   Alert,
   FlatList,
   SectionList,
-  ListView, ImageBackground, TouchableOpacity
-} from 'react-native';
+  ListView,
+  ImageBackground,
+  TouchableOpacity
+} from "react-native";
 
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from "react-navigation";
 
-import Login from './Login';
-import SecurePage from './SecurePage';
-import navigate from 'react-navigation/src/NavigationActions';
-import InputScreen from './LocalScreens/InputScreen';
-import LocalHome from './LocalScreens/LocalHome';
-import LocalForm from './LocalScreens/LocalForm';
-import AnimalInspector from './LocalScreens/AnimalInspector';
+import Login from "./Login";
+import SecurePage from "./SecurePage";
+import navigate from "react-navigation/src/NavigationActions";
+import InputScreen from "./LocalScreens/InputScreen";
+import LocalHome from "./LocalScreens/LocalHome";
+import LocalForm from "./LocalScreens/LocalForm";
+import AnimalInspector from "./LocalScreens/AnimalInspector";
 
 class HomeScreen extends React.Component {
-
   static navigationOptions = {
-    header: null,
+    header: null
   };
 
   // constructor(props) {
@@ -54,71 +55,90 @@ class HomeScreen extends React.Component {
 
     // return this.state.isLoggedIn ? <WelcomePage navigation={this.props.navigation}/> : <Login onLogin={this.onLogin}/>;
     return (
-      <TouchableOpacity onPress={() => navigate('LocalHome', {})}>
+      <TouchableOpacity onPress={() => navigate("LocalHome", {})}>
         <View>
           <Image
-            source={require('./image/home.png')}
-            style={{ width: '100%', height: '100%' }}>
-          </Image>
+            source={require("./image/home.png")}
+            style={{ width: "100%", height: "100%" }}
+          />
         </View>
       </TouchableOpacity>
-    )
+    );
   }
 }
 
 class DetailsScreen extends React.Component {
-
   static navigationOptions = {
-    title: 'Detail',
+    title: "Detail",
+    headerStyle: {
+      backgroundColor: "rgb(39,44,47)"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
   };
 
   render() {
     /* 2. Get the param, provide a fallback value if not available */
     const { navigation } = this.props;
-    const itemId = navigation.getParam('itemId', 'NO-ID');
-    const otherParam = navigation.getParam('otherParam', 'some default value');
+    const itemId = navigation.getParam("itemId", "NO-ID");
+    const otherParam = navigation.getParam("otherParam", "some default value");
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Details Screen</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Text>otherParam: {JSON.stringify(otherParam)}</Text>
 
         <FlatList
           data={[
-            { key: 'Devin' },
-            { key: 'Jackson' },
-            { key: 'James' },
-            { key: 'Joel' },
-            { key: 'John' },
-            { key: 'Jillian' },
-            { key: 'Jimmy' },
-            { key: 'Julie' },
+            { key: "Devin" },
+            { key: "Jackson" },
+            { key: "James" },
+            { key: "Joel" },
+            { key: "John" },
+            { key: "Jillian" },
+            { key: "Jimmy" },
+            { key: "Julie" }
           ]}
           renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
         />
 
-
         <SectionList
           sections={[
-            { title: 'D', data: ['Devin'] },
-            { title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie'] },
+            { title: "D", data: ["Devin"] },
+            {
+              title: "J",
+              data: [
+                "Jackson",
+                "James",
+                "Jillian",
+                "Jimmy",
+                "Joel",
+                "John",
+                "Julie"
+              ]
+            }
           ]}
           renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-          renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          renderSectionHeader={({ section }) => (
+            <Text style={styles.sectionHeader}>{section.title}</Text>
+          )}
           keyExtractor={(item, index) => index}
         />
 
         <Button
           title="Go to Details... again"
           onPress={() =>
-            this.props.navigation.push('Details', {
-              itemId: Math.floor(Math.random() * 100),
-            })}
+            this.props.navigation.push("Details", {
+              itemId: Math.floor(Math.random() * 100)
+            })
+          }
         />
         <Button
           title="Go to Home"
-          onPress={() => this.props.navigation.navigate('Home')}
+          onPress={() => this.props.navigation.navigate("Home")}
         />
         <Button
           title="Go back"
@@ -235,7 +255,7 @@ export default createStackNavigator({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
     // alignItems: 'center',
     // justifyContent: 'flex-start',
   },
@@ -245,12 +265,12 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 2,
     fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(247,247,247,1.0)',
+    fontWeight: "bold",
+    backgroundColor: "rgba(247,247,247,1.0)"
   },
   item: {
     padding: 10,
     fontSize: 18,
-    height: 44,
-  },
+    height: 44
+  }
 });

@@ -1,72 +1,90 @@
-import React from 'react';
+import React from "react";
 import {
-  Button, Image, Picker, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, TouchableOpacity,
+  Button,
+  Image,
+  Picker,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
   View
-} from 'react-native';
+} from "react-native";
 
 class LocalForm extends React.Component {
   static navigationOptions = {
-    title: '我是记录员 - 第一步',
+    title: "我是记录员 - 第一步",
+    headerStyle: {
+      backgroundColor: "rgb(39,44,47)"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: ""
     };
   }
 
   render() {
     const names = [
-      '记录时间',
-      '天气',
-      '记录地点',
-      '河宽',
-      '水深',
-      '水流流态',
-      '底质状况',
+      "记录时间",
+      "天气",
+      "记录地点",
+      "河宽",
+      "水深",
+      "水流流态",
+      "底质状况"
     ];
 
     return (
-      <ScrollView style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', width: '100%',
-        paddingLeft: 35, paddingRight: 35 }}>
+      <ScrollView
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          backgroundColor: "white",
+          width: "100%",
+          paddingLeft: 35,
+          paddingRight: 35
+        }}
+      >
+        <Image style={styles.image} source={require("../image/step1.png")} />
 
-        <Image
-          style={styles.image}
-          source={require('../image/step1.png')}
-        />
-
-        {
-          names.map((name, index) => {
-            return (
-              <View key={name}>
-                <Text style={styles.inputLabel}>{name}</Text>
-                <TextInput
-                  style={styles.input}
-                  onChangeText={(text) => this.setState({ name: text })}
-                  value={this.state.text}/>
-              </View>
-            )
-          })
-        }
-
-        <View style={styles.buttonView}>
-          <Button
-            title="下一步"
-            style={styles.button1}
-            onPress={() => this.props.navigation.navigate('Input')}
+        {names.map((name, index) => {
+          return (
+            <View key={name}>
+              <Text style={styles.inputLabel}>{name}</Text>
+              <TextInput
+                style={styles.input}
+                onChangeText={text => this.setState({ name: text })}
+                value={this.state.text}
+              />
+            </View>
+          );
+        })}
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <TouchableOpacity
+            style={styles.nextButton}
+            onPress={() => this.props.navigation.navigate("Input")}
           >
-          </Button>
+            <Text style={styles.nextButtonText}> 下一步 </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
-    )
+    );
   }
 }
 
-
 const styles = StyleSheet.create({
   image: {
-    width: '100%',
+    width: "100%",
     height: 50,
     marginTop: 20,
     marginBottom: 20
@@ -79,7 +97,7 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 10,
     fontSize: 25,
-    borderColor: 'rgb(200, 200, 200)',
+    borderColor: "rgb(200, 200, 200)",
     borderWidth: 1
   },
   buttonView: {
@@ -87,8 +105,21 @@ const styles = StyleSheet.create({
   },
   button1: {
     height: 50,
-    color: '#841584'
+    color: "#272C2F"
+  },
+  nextButton: {
+    width: 340,
+    height: 44,
+    backgroundColor: "#272C2F",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20
+  },
+  nextButtonText: {
+    fontSize: 16,
+    color: "#FFFFFF"
   }
 });
 
-export default LocalForm
+export default LocalForm;

@@ -20,6 +20,7 @@ import SecurePage from './SecurePage';
 import navigate from 'react-navigation/src/NavigationActions';
 import InputScreen from './LocalScreens/InputScreen';
 import LocalHome from './LocalScreens/LocalHome';
+import LocalForm from './LocalScreens/LocalForm';
 
 class HomeScreen extends React.Component {
 
@@ -139,6 +140,9 @@ export default createStackNavigator({
   },
   LocalHome: {
     screen: LocalHome
+  },
+  LocalForm: {
+    screen: LocalForm
   }
 });
 

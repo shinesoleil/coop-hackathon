@@ -114,7 +114,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 10
   },
   nextButtonText: {
     fontSize: 16,

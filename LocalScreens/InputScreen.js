@@ -508,15 +508,13 @@ class InputScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
     flex: 1,
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   scrollView: {
-    flex: 1,
     backgroundColor: "white",
-    height: 700
+    height: "75%"
   },
   bottomView: {
     height: 78,
@@ -568,7 +566,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#272C2F",
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginBottom: 10
   },
   nextButtonText: {
     fontSize: 16,

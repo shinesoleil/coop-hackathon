@@ -6,7 +6,7 @@ import {
 
 class LocalForm extends React.Component {
   static navigationOptions = {
-    title: '我是记录员',
+    title: '我是记录员 - 第一步',
   };
 
   constructor(props) {

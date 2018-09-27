@@ -6,7 +6,7 @@ import {
 
 class AnimalInspector extends React.Component {
   static navigationOptions = {
-    title: '淡水虾',
+    title: '底栖动物介绍 - 淡水虾',
   };
 
   constructor(props) {

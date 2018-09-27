@@ -12,7 +12,7 @@ import Slider from "react-native-slider/src/Slider";
 
 class InputScreen extends React.Component {
   static navigationOptions = {
-    title: "我是记录员"
+    title: "我是记录员 - 第二步"
   };
 
   constructor(props) {

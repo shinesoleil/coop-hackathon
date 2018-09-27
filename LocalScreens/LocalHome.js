@@ -13,28 +13,37 @@ class LocalHome extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: 'column', width: '100%', padding: 20 }}>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('LocalForm')}
-        >
+      <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'column', width: '100%' }}>
+        <View style={{ padding: 20, backgroundColor: 'rgb(238, 238, 238)' }}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('LocalForm')}
+          >
+            <Image
+              style={styles.image}
+              source={require('../image/localhome1.jpg')}
+            />
+          </TouchableOpacity>
+
           <Image
             style={styles.image}
-            source={require('../image/localhome1.jpg')}
-          />
-        </TouchableOpacity>
+            source={require('../image/localhome2.jpg')}/>
+          <Image
+            style={styles.image}
+            source={require('../image/localhome3.jpg')}/>
+        </View>
 
-        <Image
-          style={styles.image}
-          source={require('../image/localhome2.jpg')}/>
-        <Image
-          style={styles.image}
-          source={require('../image/localhome3.jpg')}/>
-
-        <View style={{  }}>
-          <Text style={{fontSize: 20}}>
+        <View style={{
+          height: 200,
+          paddingLeft: 20,
+          paddingRight: 20,
+          paddingTop: 40,
+          opacity: 0.6,
+          backgroundColor: 'white'
+        }}>
+          <Text style={{ fontSize: 20 }}>
             南塘·本地
           </Text>
-          <Text style={{fontSize: 16, marginTop: 12}}>
+          <Text style={{ fontSize: 16, marginTop: 12 }}>
             在这里，您可以了解关于南塘已采集的物种库、文化以及亲自进行记录。
           </Text>
         </View>

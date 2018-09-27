@@ -52,6 +52,15 @@ class LocalForm extends React.Component {
 
         <View style={styles.buttonView}>
           <Button
+            title="test"
+            style={styles.button1}
+            onPress={() => this.props.navigation.navigate('AnimalInspector')}
+          >
+          </Button>
+        </View>
+
+        <View style={styles.buttonView}>
+          <Button
             title="下一步"
             style={styles.button1}
             onPress={() => this.props.navigation.navigate('Input')}

@@ -20,11 +20,13 @@ import SecurePage from './SecurePage';
 import navigate from 'react-navigation/src/NavigationActions';
 import InputScreen from './LocalScreens/InputScreen';
 import LocalHome from './LocalScreens/LocalHome';
+import LocalForm from './LocalScreens/LocalForm';
+import AnimalInspector from './LocalScreens/AnimalInspector';
 
 class HomeScreen extends React.Component {
 
   static navigationOptions = {
-    title: 'home'
+    header: null,
   };
 
   // constructor(props) {
@@ -139,6 +141,12 @@ export default createStackNavigator({
   },
   LocalHome: {
     screen: LocalHome
+  },
+  LocalForm: {
+    screen: LocalForm
+  },
+  AnimalInspector: {
+    screen: AnimalInspector
   }
 });
 

@@ -13,9 +13,9 @@ class LocalHome extends React.Component {
 
   render() {
     return (
-      <View style={{ width: '100%', padding: 20 }}>
+      <View style={{ flex: 1, flexDirection: 'column', width: '100%', padding: 20 }}>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Input')}
+          onPress={() => this.props.navigation.navigate('LocalForm')}
         >
           <Image
             style={styles.image}
@@ -29,6 +29,15 @@ class LocalHome extends React.Component {
         <Image
           style={styles.image}
           source={require('../image/localhome3.jpg')}/>
+
+        <View style={{  }}>
+          <Text style={{fontSize: 20}}>
+            南塘·本地
+          </Text>
+          <Text style={{fontSize: 16, marginTop: 12}}>
+            在这里，您可以了解关于南塘已采集的物种库、文化以及亲自进行记录。
+          </Text>
+        </View>
       </View>
     )
   }

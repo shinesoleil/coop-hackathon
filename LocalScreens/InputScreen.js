@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Image,
+  ScrollView
+} from "react-native";
 import Slider from "react-native-slider/src/Slider";
 
 class InputScreen extends React.Component {
@@ -57,15 +64,14 @@ class InputScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, height: "80%" }}>
+      <ScrollView style={{ flex: 1 }}>
         <View
           style={[
             {
+              paddingTop: 20,
               flex: 1,
-              height: 22,
               flexDirection: "row",
-              paddingLeft: 10,
-              paddingRight: 10
+              paddingLeft: 10
             }
           ]}
         >
@@ -85,7 +91,14 @@ class InputScreen extends React.Component {
               source={require("../image/view.png")}
               style={{ width: 14, height: 16 }}
             />
-            <Text style={{ fontSize: 15, textAlign: "right", height: 22 }}>
+            <Text
+              style={{
+                fontSize: 15,
+                textAlign: "right",
+                height: 22,
+                color: "rgb(32, 200, 255)"
+              }}
+            >
               查看
             </Text>
           </View>
@@ -97,14 +110,52 @@ class InputScreen extends React.Component {
             alignItems: "center"
           }}
         >
-          <Text style={[styles.text, styles.dashedLine]}>
-            <Text style={{ color: "skyblue" }}>{this.state.firstNum}</Text> 只
-          </Text>
+          <View
+            style={[
+              {
+                flex: 1,
+                flexDirection: "column"
+              }
+            ]}
+          >
+            <View
+              style={[
+                styles.smallText,
+                {
+                  flex: 1,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }
+              ]}
+            >
+              <Text
+                style={{
+                  color: "skyblue",
+                  paddingHorizontal: 10,
+                  fontWeight: "bold",
+                  fontSize: 18
+                }}
+              >
+                {this.state.firstNum}
+              </Text>{" "}
+              <Text>只</Text>
+            </View>
+            <Image
+              source={require("../image/line.png")}
+              style={{ width: 64, height: 2 }}
+              resizeMode="stretch"
+            />
+          </View>
         </View>
         <Slider
           style={styles.slider}
+          thumbTintColor="transparent"
+          thumbImage={require("../image/thumb.png")}
           value={this.state.value}
           maximumValue={10}
+          minimumTrackTintColor={"#d8d8d8"}
+          maximumTrackTintColor={"#d8d8d8"}
           step={1}
           onValueChange={value => this.setState({ firstNum: value })}
         />
@@ -158,7 +209,7 @@ class InputScreen extends React.Component {
           水质综合评价：
           {this.translateStatus(this.calculateFBI())}
         </Text>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -169,21 +220,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "center"
   },
+  smallText: {
+    margin: 5
+  },
   slider: {
     marginLeft: 10,
     marginRight: 10
   },
   divider: {
-    borderBottomColor: "black",
+    borderBottomColor: "lightgray",
     borderBottomWidth: 1,
     marginTop: 10,
     marginBottom: 10
-  },
-  dashedLine: {
-    borderWidth: 0.8,
-    borderColor: "red",
-    borderStyle: "dotted",
-    borderRadius: 0.1
   }
 });
 

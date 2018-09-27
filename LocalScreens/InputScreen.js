@@ -37,15 +37,15 @@ class InputScreen extends React.Component {
         parseInt(this.state.forthNum));
 
     if (isNaN(res)) {
-      return "请输入完整信息";
+      return "--";
     } else {
       return res.toFixed(2);
     }
   };
 
   translateStatus = FBI => {
-    if (FBI === "请输入完整信息") {
-      return "请输入完整信息";
+    if (FBI === "--") {
+      return "--";
     }
 
     let status;
@@ -65,175 +65,227 @@ class InputScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
-        <Image style={styles.image} source={require("../image/step2.png")} />
+      <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <Image style={styles.image} source={require("../image/step2.png")} />
 
-        <View
-          style={[
-            {
-              paddingTop: 20,
-              flex: 1,
-              flexDirection: "row",
-              paddingLeft: 10
-            }
-          ]}
-        >
-          <View style={{ flex: 1, height: 22 }}>
-            <Text style={{ fontSize: 15 }}>淡水虾（耐污值：6）</Text>
+          <View
+            style={[
+              {
+                paddingTop: 20,
+                flex: 1,
+                flexDirection: "row",
+                paddingLeft: 10
+              }
+            ]}
+          >
+            <View style={{ flex: 1, height: 22 }}>
+              <Text style={{ fontSize: 15 }}>淡水虾（耐污值：6）</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                paddingRight: 27,
+                height: 22
+              }}
+            >
+              <Image
+                source={require("../image/view.png")}
+                style={{ width: 14, height: 16 }}
+              />
+              <Text
+                style={{
+                  fontSize: 15,
+                  textAlign: "right",
+                  height: 22,
+                  color: "rgb(32, 200, 255)"
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate("AnimalInspector")
+                }
+              >
+                查看
+              </Text>
+            </View>
           </View>
           <View
             style={{
               flex: 1,
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              paddingRight: 27,
-              height: 22
+              justifyContent: "center",
+              alignItems: "center"
             }}
-          >
-            <Image
-              source={require("../image/view.png")}
-              style={{ width: 14, height: 16 }}
-            />
-            <Text
-              style={{
-                fontSize: 15,
-                textAlign: "right",
-                height: 22,
-                color: "rgb(32, 200, 255)"
-              }}
-              onPress={() => this.props.navigation.navigate("AnimalInspector")}
-            >
-              查看
-            </Text>
-          </View>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <View
-            style={[
-              {
-                flex: 1,
-                flexDirection: "column"
-              }
-            ]}
           >
             <View
               style={[
-                styles.smallText,
                 {
                   flex: 1,
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center"
+                  flexDirection: "column"
                 }
               ]}
             >
-              <Text
-                style={{
-                  color: "skyblue",
-                  paddingHorizontal: 10,
-                  fontWeight: "bold",
-                  fontSize: 18
-                }}
+              <View
+                style={[
+                  styles.smallText,
+                  {
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }
+                ]}
               >
-                {this.state.firstNum}
-              </Text>{" "}
-              <Text>只</Text>
+                <Text
+                  style={{
+                    color: "skyblue",
+                    paddingHorizontal: 10,
+                    fontWeight: "bold",
+                    fontSize: 18
+                  }}
+                >
+                  {this.state.firstNum}
+                </Text>{" "}
+                <Text>只</Text>
+              </View>
+              <Image
+                source={require("../image/line.png")}
+                style={{ width: 64, height: 2 }}
+                resizeMode="stretch"
+              />
             </View>
-            <Image
-              source={require("../image/line.png")}
-              style={{ width: 64, height: 2 }}
-              resizeMode="stretch"
-            />
+          </View>
+          <Slider
+            style={styles.slider}
+            thumbTintColor="transparent"
+            thumbImage={require("../image/thumb.png")}
+            value={this.state.value}
+            maximumValue={10}
+            minimumTrackTintColor={"#d8d8d8"}
+            maximumTrackTintColor={"#d8d8d8"}
+            step={1}
+            onValueChange={value => this.setState({ firstNum: value })}
+          />
+          <View style={styles.divider} />
+
+          <Text style={{ padding: 10, fontSize: 15 }}>田螺（耐污值：5）</Text>
+          <Text style={styles.text}>
+            <Text style={{ color: "skyblue" }}>{this.state.secondNum}</Text> 只
+          </Text>
+          <Slider
+            style={styles.slider}
+            value={this.state.value}
+            maximumValue={10}
+            step={1}
+            onValueChange={value => this.setState({ secondNum: value })}
+          />
+          <View style={styles.divider} />
+
+          <Text style={{ padding: 10, fontSize: 15 }}>
+            水蚯蚓（耐污值：10）
+          </Text>
+          <Text style={styles.text}>
+            <Text style={{ color: "skyblue" }}>{this.state.thirdNum}</Text> 只
+          </Text>
+          <Slider
+            style={styles.slider}
+            value={this.state.value}
+            maximumValue={10}
+            step={1}
+            onValueChange={value => this.setState({ thirdNum: value })}
+          />
+          <View style={styles.divider} />
+
+          <Text style={{ padding: 10, fontSize: 15 }}>
+            摇蚊幼虫（耐污值：9）
+          </Text>
+          <Text style={styles.text}>
+            <Text style={{ color: "skyblue" }}>{this.state.forthNum}</Text> 只
+          </Text>
+          <Slider
+            style={styles.slider}
+            value={this.state.value}
+            maximumValue={10}
+            step={1}
+            onValueChange={value => this.setState({ forthNum: value })}
+          />
+          <View style={styles.divider} />
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              padding: 5
+            }}
+          >
+            <TouchableOpacity
+              style={styles.nextButton}
+              // onPress={() => this.props.navigation.navigate('LocalForm')}
+            >
+              <Text style={styles.nextButtonText}> 提交 </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* <Text style={{ padding: 10, fontSize: 15 }}>
+            FBI（科级耐污指数）：
+            {this.calculateFBI()}
+          </Text>
+
+          <Text style={{ padding: 10, fontSize: 15 }}>
+            水质综合评价：
+            {this.translateStatus(this.calculateFBI())}
+          </Text> */}
+        </ScrollView>
+        <View style={styles.bottomView}>
+          <View style={styles.bottomContainer}>
+            <Text style={styles.bottomTextHead}>FBI（科级耐污指数)</Text>
+            <Text style={styles.bottomTextDetail}> {this.calculateFBI()}</Text>
+          </View>
+          <View style={styles.spector} />
+          <View style={styles.bottomContainer}>
+            <Text style={styles.bottomTextHead}>水质综合评价</Text>
+            <Text style={styles.bottomTextDetail}>
+              {this.translateStatus(this.calculateFBI())}
+            </Text>
           </View>
         </View>
-        <Slider
-          style={styles.slider}
-          thumbTintColor="transparent"
-          thumbImage={require("../image/thumb.png")}
-          value={this.state.value}
-          maximumValue={10}
-          minimumTrackTintColor={"#d8d8d8"}
-          maximumTrackTintColor={"#d8d8d8"}
-          step={1}
-          onValueChange={value => this.setState({ firstNum: value })}
-        />
-        <View style={styles.divider} />
-
-        <Text style={{ padding: 10, fontSize: 15 }}>田螺（耐污值：5）</Text>
-        <Text style={styles.text}>
-          <Text style={{ color: "skyblue" }}>{this.state.secondNum}</Text> 只
-        </Text>
-        <Slider
-          style={styles.slider}
-          value={this.state.value}
-          maximumValue={10}
-          step={1}
-          onValueChange={value => this.setState({ secondNum: value })}
-        />
-        <View style={styles.divider} />
-
-        <Text style={{ padding: 10, fontSize: 15 }}>水蚯蚓（耐污值：10）</Text>
-        <Text style={styles.text}>
-          <Text style={{ color: "skyblue" }}>{this.state.thirdNum}</Text> 只
-        </Text>
-        <Slider
-          style={styles.slider}
-          value={this.state.value}
-          maximumValue={10}
-          step={1}
-          onValueChange={value => this.setState({ thirdNum: value })}
-        />
-        <View style={styles.divider} />
-
-        <Text style={{ padding: 10, fontSize: 15 }}>摇蚊幼虫（耐污值：9）</Text>
-        <Text style={styles.text}>
-          <Text style={{ color: "skyblue" }}>{this.state.forthNum}</Text> 只
-        </Text>
-        <Slider
-          style={styles.slider}
-          value={this.state.value}
-          maximumValue={10}
-          step={1}
-          onValueChange={value => this.setState({ forthNum: value })}
-        />
-        <View style={styles.divider} />
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 5
-          }}
-        >
-          <TouchableOpacity
-            style={styles.nextButton}
-            // onPress={() => this.props.navigation.navigate('LocalForm')}
-          >
-            <Text style={styles.nextButtonText}> 提交 </Text>
-          </TouchableOpacity>
-        </View>
-
-        <Text style={{ padding: 10, fontSize: 15 }}>
-          FBI（科级耐污指数）：
-          {this.calculateFBI()}
-        </Text>
-
-        <Text style={{ padding: 10, fontSize: 15 }}>
-          水质综合评价：
-          {this.translateStatus(this.calculateFBI())}
-        </Text>
-      </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+    flex: 1,
+    flexDirection: "column"
+  },
+  scrollView: {
+    flex: 1,
+    backgroundColor: "white",
+    height: 700
+  },
+  bottomView: {
+    height: 78,
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "white"
+  },
+  bottomContainer: {
+    flex: 1,
+    flexDirection: "column",
+    height: 78,
+    alignItems: "center"
+  },
+  spector: {
+    width: 2,
+    backgroundColor: "lightskyblue",
+    margin: 4,
+    height: 70
+  },
+  bottomTextHead: { fontSize: 15, paddingTop: 11 },
+  bottomTextDetail: { fontSize: 20, fontWeight: "bold", paddingTop: 11 },
   image: {
     width: "100%",
     height: 50,

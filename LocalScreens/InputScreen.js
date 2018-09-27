@@ -520,7 +520,7 @@ const styles = StyleSheet.create({
     height: 78,
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "white"
+    backgroundColor: "rgb(251,251,251)"
   },
   bottomContainer: {
     flex: 1,

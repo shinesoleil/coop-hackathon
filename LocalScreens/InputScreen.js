@@ -168,48 +168,303 @@ class InputScreen extends React.Component {
           />
           <View style={styles.divider} />
 
-          <Text style={{ padding: 10, fontSize: 15 }}>田螺（耐污值：5）</Text>
-          <Text style={styles.text}>
-            <Text style={{ color: "skyblue" }}>{this.state.secondNum}</Text> 只
-          </Text>
+          <View
+            style={[
+              {
+                paddingTop: 20,
+                flex: 1,
+                flexDirection: "row",
+                paddingLeft: 10
+              }
+            ]}
+          >
+            <View style={{ flex: 1, height: 22 }}>
+              <Text style={{ fontSize: 15 }}>田螺（耐污值：5）</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                paddingRight: 27,
+                height: 22
+              }}
+            >
+              <Image
+                source={require("../image/view.png")}
+                style={{ width: 14, height: 16 }}
+              />
+              <Text
+                style={{
+                  fontSize: 15,
+                  textAlign: "right",
+                  height: 22,
+                  color: "rgb(32, 200, 255)"
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate("AnimalInspector")
+                }
+              >
+                查看
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <View
+              style={[
+                {
+                  flex: 1,
+                  flexDirection: "column"
+                }
+              ]}
+            >
+              <View
+                style={[
+                  styles.smallText,
+                  {
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }
+                ]}
+              >
+                <Text
+                  style={{
+                    color: "skyblue",
+                    paddingHorizontal: 10,
+                    fontWeight: "bold",
+                    fontSize: 18
+                  }}
+                >
+                  {this.state.secondNum}
+                </Text>{" "}
+                <Text>只</Text>
+              </View>
+              <Image
+                source={require("../image/line.png")}
+                style={{ width: 64, height: 2 }}
+                resizeMode="stretch"
+              />
+            </View>
+          </View>
           <Slider
             style={styles.slider}
+            thumbTintColor="transparent"
+            thumbImage={require("../image/thumb.png")}
             value={this.state.value}
             maximumValue={10}
+            minimumTrackTintColor={"#d8d8d8"}
+            maximumTrackTintColor={"#d8d8d8"}
             step={1}
             onValueChange={value => this.setState({ secondNum: value })}
           />
           <View style={styles.divider} />
 
-          <Text style={{ padding: 10, fontSize: 15 }}>
-            水蚯蚓（耐污值：10）
-          </Text>
-          <Text style={styles.text}>
-            <Text style={{ color: "skyblue" }}>{this.state.thirdNum}</Text> 只
-          </Text>
+          <View
+            style={[
+              {
+                paddingTop: 20,
+                flex: 1,
+                flexDirection: "row",
+                paddingLeft: 10
+              }
+            ]}
+          >
+            <View style={{ flex: 1, height: 22 }}>
+              <Text style={{ fontSize: 15 }}>水蚯蚓（耐污值：10）</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                paddingRight: 27,
+                height: 22
+              }}
+            >
+              <Image
+                source={require("../image/view.png")}
+                style={{ width: 14, height: 16 }}
+              />
+              <Text
+                style={{
+                  fontSize: 15,
+                  textAlign: "right",
+                  height: 22,
+                  color: "rgb(32, 200, 255)"
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate("AnimalInspector")
+                }
+              >
+                查看
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <View
+              style={[
+                {
+                  flex: 1,
+                  flexDirection: "column"
+                }
+              ]}
+            >
+              <View
+                style={[
+                  styles.smallText,
+                  {
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }
+                ]}
+              >
+                <Text
+                  style={{
+                    color: "skyblue",
+                    paddingHorizontal: 10,
+                    fontWeight: "bold",
+                    fontSize: 18
+                  }}
+                >
+                  {this.state.thirdNum}
+                </Text>{" "}
+                <Text>只</Text>
+              </View>
+              <Image
+                source={require("../image/line.png")}
+                style={{ width: 64, height: 2 }}
+                resizeMode="stretch"
+              />
+            </View>
+          </View>
           <Slider
             style={styles.slider}
+            thumbTintColor="transparent"
+            thumbImage={require("../image/thumb.png")}
             value={this.state.value}
             maximumValue={10}
+            minimumTrackTintColor={"#d8d8d8"}
+            maximumTrackTintColor={"#d8d8d8"}
             step={1}
             onValueChange={value => this.setState({ thirdNum: value })}
           />
           <View style={styles.divider} />
 
-          <Text style={{ padding: 10, fontSize: 15 }}>
-            摇蚊幼虫（耐污值：9）
-          </Text>
-          <Text style={styles.text}>
-            <Text style={{ color: "skyblue" }}>{this.state.forthNum}</Text> 只
-          </Text>
+          <View
+            style={[
+              {
+                paddingTop: 20,
+                flex: 1,
+                flexDirection: "row",
+                paddingLeft: 10
+              }
+            ]}
+          >
+            <View style={{ flex: 1, height: 22 }}>
+              <Text style={{ fontSize: 15 }}>摇蚊幼虫（耐污值：9）</Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                paddingRight: 27,
+                height: 22
+              }}
+            >
+              <Image
+                source={require("../image/view.png")}
+                style={{ width: 14, height: 16 }}
+              />
+              <Text
+                style={{
+                  fontSize: 15,
+                  textAlign: "right",
+                  height: 22,
+                  color: "rgb(32, 200, 255)"
+                }}
+                onPress={() =>
+                  this.props.navigation.navigate("AnimalInspector")
+                }
+              >
+                查看
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <View
+              style={[
+                {
+                  flex: 1,
+                  flexDirection: "column"
+                }
+              ]}
+            >
+              <View
+                style={[
+                  styles.smallText,
+                  {
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }
+                ]}
+              >
+                <Text
+                  style={{
+                    color: "skyblue",
+                    paddingHorizontal: 10,
+                    fontWeight: "bold",
+                    fontSize: 18
+                  }}
+                >
+                  {this.state.forthNum}
+                </Text>{" "}
+                <Text>只</Text>
+              </View>
+              <Image
+                source={require("../image/line.png")}
+                style={{ width: 64, height: 2 }}
+                resizeMode="stretch"
+              />
+            </View>
+          </View>
           <Slider
             style={styles.slider}
+            thumbTintColor="transparent"
+            thumbImage={require("../image/thumb.png")}
             value={this.state.value}
             maximumValue={10}
+            minimumTrackTintColor={"#d8d8d8"}
+            maximumTrackTintColor={"#d8d8d8"}
             step={1}
             onValueChange={value => this.setState({ forthNum: value })}
           />
           <View style={styles.divider} />
+
           <View
             style={{
               flex: 1,
